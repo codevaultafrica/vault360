@@ -1,482 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BizVault – Your Business, Simplified</title>
-  <style>
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      src: local('Inter'), url('https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/Inter-Regular.woff2') format('woff2');
-    }
-    
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 600;
-      src: local('Inter Bold'), url('https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/Inter-Bold.woff2') format('woff2');
-    }
-    
-    * {
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-    
-    body {
-      margin: 0;
-      background: linear-gradient(135deg, #f7f9fc 0%, #e8f2ff 100%);
-      color: #1a1a1a;
-      line-height: 1.6;
-      padding: 20px;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      min-height: 80vh;
-    }
-    
-    .hero-content {
-      text-align: left;
-    }
-    
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      color: #2b6cb0;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-    
-    .hero-content .subtitle {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      color: #4a5568;
-    }
-    
-    .social-proof {
-      background: rgba(43, 108, 176, 0.1);
-      padding: 15px 20px;
-      border-radius: 12px;
-      margin-bottom: 40px;
-      border-left: 4px solid #2b6cb0;
-    }
-    
-    .social-proof p {
-      margin: 0;
-      font-weight: 600;
-      color: #2b6cb0;
-      font-size: 1rem;
-    }
-    
-    .features {
-      margin-bottom: 40px;
-    }
-    
-    .features h3 {
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-      color: #2d3748;
-    }
-    
-    .feature-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .feature-list li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-      color: #4a5568;
-    }
-    
-    .feature-icon {
-      width: 24px;
-      height: 24px;
-      background: #2b6cb0;
-      border-radius: 50%;
-      margin-right: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 14px;
-      flex-shrink: 0;
-    }
-    
-    .signup-form {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    }
-    
-    .signup-form h4 {
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-size: 1.3rem;
-      color: #2d3748;
-    }
-    
-    input[type="email"] {
-      width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      border: 2px solid #e2e8f0;
-      margin-bottom: 15px;
-      font-size: 1rem;
-      transition: border-color 0.3s ease;
-    }
-    
-    input[type="email"]:focus {
-      outline: none;
-      border-color: #2b6cb0;
-      box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
-    }
-    
-    button {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, #2b6cb0 0%, #3182ce 100%);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(43, 108, 176, 0.3);
-    }
-    
-    .phone-mockup {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .phone-frame {
-      width: 280px;
-      height: 560px;
-      background: linear-gradient(145deg, #ffffff, #f0f0f0);
-      border: 3px solid #333;
-      border-radius: 25px;
-      padding: 15px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      position: relative;
-      transform: rotate(-5deg);
-      transition: transform 0.3s ease;
-    }
-    
-    .phone-frame:hover {
-      transform: rotate(0deg) scale(1.02);
-    }
-    
-    .screen {
-      width: 100%;
-      height: 100%;
-      border: 2px solid #666;
-      border-radius: 10px;
-      background: white;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .header {
-      background: #333;
-      color: white;
-      padding: 12px 15px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 16px;
-      border-bottom: 2px solid #666;
-    }
-    
-    .content {
-      flex: 1;
-      padding: 15px;
-      overflow-y: auto;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    
-    .stat-card {
-      border: 2px solid #666;
-      padding: 15px;
-      text-align: center;
-      background: #f9f9f9;
-      border-radius: 5px;
-    }
-    
-    .stat-number {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    
-    .stat-label {
-      font-size: 11px;
-      color: #666;
-      text-transform: uppercase;
-    }
-    
-    .alert-box {
-      background: #fff;
-      border: 2px solid #666;
-      border-left: 4px solid #333;
-      padding: 12px;
-      margin-bottom: 20px;
-      font-size: 12px;
-    }
-    
-    .action-buttons {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .btn {
-      flex: 1;
-      padding: 12px;
-      border: 2px solid #333;
-      background: white;
-      text-align: center;
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 3px;
-    }
-    
-    .btn-primary {
-      background: #333;
-      color: white;
-    }
-    
-    .bottom-nav {
-      background: #f8f8f8;
-      border-top: 2px solid #666;
-      display: flex;
-      height: 50px;
-    }
-    
-    .nav-item {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      border-right: 1px solid #ccc;
-    }
-    
-    .nav-item:last-child {
-      border-right: none;
-    }
-    
-    .nav-item.active {
-      background: #333;
-      color: white;
-    }
-    
-    footer {
-      text-align: center;
-      margin-top: 60px;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #718096;
-      border-top: 1px solid #e2e8f0;
-    }
-    
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-      }
-      
-      .hero-content {
-        text-align: center;
-      }
-      
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-      
-      .phone-frame {
-        transform: none;
-        width: 250px;
-        height: 500px;
-      }
-      
-      .phone-frame:hover {
-        transform: scale(1.02);
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vault360 – Workflow Automation for Africa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="container">
-    <div class="hero-content">
-      <h1>BizVault is Coming Soon!</h1>
-      <p class="subtitle">Smart, simple business tools for Nigerian shop owners, market traders, and SMEs.</p>
-      
-      <div class="social-proof">
-        <p>🚀 Join 500+ Nigerian business owners waiting for launch</p>
+<body class="bg-white text-gray-800 font-sans">
+  <!-- Hero Section -->
+  <section class="bg-blue-900 text-white py-16 px-6 text-center">
+    <h1 class="text-4xl font-bold mb-4">Vault360™ – Automate Your Business, Run Smarter</h1>
+    <p class="text-lg max-w-2xl mx-auto mb-6">Africa’s all-in-one workflow automation platform for schools, hospitals, estates, and SMEs. Digitize your operations, get paid faster, and gain full control.</p>
+    <a href="#waitlist" class="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">Join the Waitlist</a>
+  </section>
+
+  <!-- Why Vault360 -->
+  <section class="py-16 px-6 text-center max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6">Why Vault360?</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="font-semibold text-xl mb-2">🚀 Automate Your Workflow</h3>
+        <p>Ditch the paperwork. Manage records, billing, and communication from one place.</p>
       </div>
-      
-      <div class="features">
-        <h3>What you'll get:</h3>
-        <ul class="feature-list">
-          <li>
-            <span class="feature-icon">₦</span>
-            Track sales and inventory in Naira with real-time updates
-          </li>
-          <li>
-            <span class="feature-icon">📱</span>
-            Simple mobile app designed for Nigerian business owners
-          </li>
-          <li>
-            <span class="feature-icon">📊</span>
-            Daily sales reports to understand your business better
-          </li>
+      <div>
+        <h3 class="font-semibold text-xl mb-2">🔐 Secure & Reliable</h3>
+        <p>Hosted securely with role-based access for your team.</p>
+      </div>
+      <div>
+        <h3 class="font-semibold text-xl mb-2">🌍 Built for Africa</h3>
+        <p>Local payment support, SMS alerts, and offline-first features included.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="bg-gray-50 py-16 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Who It's For</h2>
+    <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div class="p-4 border rounded-lg">
+        <h3 class="font-semibold text-xl mb-2">🏫 Schools</h3>
+        <ul class="text-left list-disc ml-4">
+          <li>Student database</li>
+          <li>Result cards</li>
+          <li>Parent SMS portal</li>
         </ul>
       </div>
-      
-      <div class="signup-form">
-        <h4>Get Early Access</h4>
-        <form id="earlyAccessForm" action="https://formspree.io/f/mwpbwdra" method="POST">
-          <input type="email" name="email" placeholder="Enter your email address" required />
-          <button type="submit">Notify Me When We Launch</button>
-          <p id="formMessage" style="margin-top: 15px; text-align: center;"></p>
-        </form>
+      <div class="p-4 border rounded-lg">
+        <h3 class="font-semibold text-xl mb-2">🏥 Hospitals</h3>
+        <ul class="text-left list-disc ml-4">
+          <li>Patient records</li>
+          <li>Appointments</li>
+          <li>Billing & inventory</li>
+        </ul>
+      </div>
+      <div class="p-4 border rounded-lg">
+        <h3 class="font-semibold text-xl mb-2">🏘️ Estates</h3>
+        <ul class="text-left list-disc ml-4">
+          <li>Tenant management</li>
+          <li>Rent payments</li>
+          <li>Complaint logs</li>
+        </ul>
+      </div>
+      <div class="p-4 border rounded-lg">
+        <h3 class="font-semibold text-xl mb-2">🏪 SMEs</h3>
+        <ul class="text-left list-disc ml-4">
+          <li>Inventory management</li>
+          <li>Invoices</li>
+          <li>Customer database</li>
+        </ul>
       </div>
     </div>
-    
-    <div class="phone-mockup">
-      <div class="phone-frame">
-        <div class="screen">
-          <div class="header">BizVault Dashboard</div>
-          <div class="content">
-            <div class="stats-grid">
-              <div class="stat-card">
-                <div class="stat-number">₦2,450</div>
-                <div class="stat-label">Total Sales</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-number">127</div>
-                <div class="stat-label">Total Products</div>
-              </div>
-            </div>
-            
-            <div class="alert-box">
-              <strong>⚠ Low Stock Alert:</strong><br>
-              3 products running low
-            </div>
-            
-            <div class="action-buttons">
-              <div class="btn">Add Product</div>
-              <div class="btn btn-primary">Sell Product</div>
-            </div>
-          </div>
-          <div class="bottom-nav">
-            <div class="nav-item active">Home</div>
-            <div class="nav-item">Customers</div>
-            <div class="nav-item">Sales Report</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <footer>
-    &copy; 2025 BizVault – Powered by CodeVault Africa
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 px-6 text-center max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Built by CodeVault Africa</h2>
+    <p class="text-lg">We help local businesses go digital — no stress, no code, no foreign templates. Your success is our mission.</p>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="cta" class="bg-blue-900 text-white py-16 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-4">Let’s Talk</h2>
+    <p class="mb-6">Get early access and enjoy discounted setup, free onboarding & a branded portal.</p>
+    <form action="https://formspree.io/f/mdkddwoe" method="POST" class="space-y-4 max-w-md mx-auto" onsubmit="return handleSubmit(event, 'cta')">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-2 text-black border rounded">
+      <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-2 text-black border rounded">
+      <textarea name="message" placeholder="Tell us what you need..." rows="4" class="w-full px-4 py-2 text-black border rounded"></textarea>
+      <button type="submit" class="bg-white text-blue-900 px-6 py-2 rounded font-semibold hover:bg-gray-100">Book a Free Demo</button>
+      <p id="cta-success" class="hidden text-green-300">Thank you! We'll get back to you shortly.</p>
+    </form>
+    <a href="tel:+2348163806023" class="inline-block mt-6 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded font-semibold">Call Us</a>
+  </section>
+
+  <!-- Waitlist Section -->
+  <section id="waitlist" class="py-16 px-6 text-center max-w-xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Join the Waitlist</h2>
+    <form action="https://formspree.io/f/mdkddwoe" method="POST" class="space-y-4" onsubmit="return handleSubmit(event, 'waitlist')">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-2 border rounded">
+      <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-2 border rounded">
+      <button type="submit" class="bg-blue-900 text-white px-6 py-2 rounded hover:bg-blue-800">Join Waitlist</button>
+      <p id="waitlist-success" class="hidden text-green-700">You're on the list! We'll notify you at launch.</p>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-gray-500 bg-gray-100">
+    &copy; 2025 Vault360 by CodeVault Africa. All rights reserved.
   </footer>
-  
+
   <script>
-    const form = document.getElementById("earlyAccessForm");
-    const message = document.getElementById("formMessage");
-    
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      
-      // Show loading state
-      const button = form.querySelector('button');
-      const originalText = button.textContent;
-      button.textContent = 'Signing you up...';
-      button.disabled = true;
-      
-      try {
-        const response = await fetch(form.action, {
-          method: "POST",
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-        
+    function handleSubmit(event, formId) {
+      event.preventDefault();
+      const form = event.target;
+      const successMessage = document.getElementById(`${formId}-success`);
+
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
         if (response.ok) {
-          message.style.color = "#22c55e";
-          message.textContent = "🎉 Thank you! You'll be notified when we launch.";
           form.reset();
-          
-          // Update social proof number (simulate growth)
-          const socialProof = document.querySelector('.social-proof p');
-          const currentNumber = parseInt(socialProof.textContent.match(/\d+/)[0]);
-          socialProof.textContent = `🚀 Join ${currentNumber + 1}+ Nigerian business owners waiting for launch`;
+          successMessage.classList.remove('hidden');
         } else {
-          message.style.color = "#ef4444";
-          message.textContent = "Oops! Something went wrong. Please try again.";
+          alert("Oops! There was a problem submitting your form");
         }
-      } catch (error) {
-        message.style.color = "#ef4444";
-        message.textContent = "Network error. Try again later.";
-      } finally {
-        button.textContent = originalText;
-        button.disabled = false;
-      }
-    });
-    
-    // Add some subtle animations
-    window.addEventListener('load', () => {
-      const phoneFrame = document.querySelector('.phone-frame');
-      const heroContent = document.querySelector('.hero-content');
-      
-      setTimeout(() => {
-        heroContent.style.opacity = '1';
-        heroContent.style.transform = 'translateY(0)';
-      }, 100);
-      
-      setTimeout(() => {
-        phoneFrame.style.opacity = '1';
-        phoneFrame.style.transform = 'rotate(-5deg) translateY(0)';
-      }, 300);
-    });
-    
-    // Initial styles for animation
-    document.querySelector('.hero-content').style.opacity = '0';
-    document.querySelector('.hero-content').style.transform = 'translateY(20px)';
-    document.querySelector('.hero-content').style.transition = 'all 0.6s ease';
-    
-    document.querySelector('.phone-frame').style.opacity = '0';
-    document.querySelector('.phone-frame').style.transform = 'rotate(-5deg) translateY(20px)';
-    document.querySelector('.phone-frame').style.transition = 'all 0.6s ease';
+      });
+      return false;
+    }
   </script>
 </body>
 </html>
